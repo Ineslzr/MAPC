@@ -4,37 +4,35 @@ import td1.original.api.monetary.Product;
 
 import java.util.List;
 
-public class Burger implements Product {
+public abstract class Burger implements FoodProduct {
 
-    String name;
-    List<Product> items;
+    private String name;
+    private List<FoodProduct> items;
 
-    public Burger(String name, List<Product> items) {
+    protected Burger(String name, List<FoodProduct> items) {
         this.name = name;
         this.items = items;
     }
 
     @Override
+    public double calories() {
+        return 0;
+    }
+
+    @Override
     public double weight() {
-        return items.stream().map(Product::weight).reduce(0.0, Double::sum);
+        return 0;
     }
 
     @Override
     public double price() {
-        return items.stream().map(Product::price).reduce(0.0, Double::sum);
+        return 0;
     }
 
     @Override
-    public String toString() {
-        final String DELIM = "--------------------\n";
-        StringBuilder buffer = new StringBuilder();
-        buffer.append(String.format("*** Menu %s ***\n", name));
-        for (Object item : items) {
-            buffer.append(String.format("- %s\n", item));
-        }
-        buffer.append(DELIM);
-        buffer.append(String.format("price:         %.2f\n", price()));
-        buffer.append(DELIM);
-        return buffer.toString();
+    public double calories_per_100g() {
+        return calories() / weight() * 100;
     }
+
+
 }

@@ -2,7 +2,7 @@ package td1.original.api.general;
 
 import td1.original.api.monetary.Product;
 
-public class DeepFriedOnions implements Product {
+public class DeepFriedOnions implements FoodProduct {
     // 590 kcal / 100g
 
     private double weight;
@@ -12,12 +12,12 @@ public class DeepFriedOnions implements Product {
         this.weight = weight;
     }
 
-    @Override
+
     public double weight() {
         return weight;
     }
 
-    @Override
+
     public double price() {
         return BASE_PRICE * weight / 100;
     }
@@ -27,4 +27,13 @@ public class DeepFriedOnions implements Product {
         return String.format("deep fried onions (%.0fg) -- %.2f€", weight(), price());
     }
 
+    @Override
+    public double calories_per_100g() {
+        return 590;
+    }
+
+    @Override
+    public double calories() {
+        return calories_per_100g() * weight / 100;
+    }
 }

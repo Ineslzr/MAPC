@@ -2,14 +2,7 @@ package td1.original.api.general;
 
 import td1.original.api.monetary.Product;
 
-public class Sauce implements Product {
-
-    public static enum SauceType {
-        BURGER, BARBECUE, BEARNAISE;
-        // BURGER : 240 kcal / 100g
-        // BARBECUE : 130 kcal / 100g
-        // BEARNAISE : 550 kcal / 100g
-    }
+public class Sauce implements FoodProduct {
 
     private static double BASE_PRICE = 1;
 
@@ -21,18 +14,25 @@ public class Sauce implements Product {
         this.weight = weight;
     }
 
-    @Override
     public double price() {
         return BASE_PRICE;
     }
 
-    @Override
     public double weight() {
         return weight;
     }
 
     @Override
+    public double calories() {
+        return weight * calories_per_100g() / 100;
+    }
+
+    @Override
     public String toString() {
         return String.format("%s sauce (%.0fg) -- %.2f€", type, weight(), price());
+    }
+
+    public double calories_per_100g() {
+        return type.calories_per_100g();
     }
 }

@@ -1,11 +1,10 @@
-package td1.original.api.burger;
+package td1.original.api.general;
 
-import td1.original.api.restauration.Base;
-
-public enum BurgerSauce implements Base {
+public enum SauceType implements FoodConstituent {
 
     BURGER,BARBECUE,BEARNAISE;
 
+    @Override
     public double calories_per_100g(){
         switch(this) {
             case BURGER:
@@ -17,15 +16,5 @@ public enum BurgerSauce implements Base {
             default:
                 return 0.0;
         }
-    }
-
-    public double price(){
-        return 1.0;
-    }
-
-
-    @Override
-    public boolean haseUniquePrice() {
-        return false;
     }
 }
