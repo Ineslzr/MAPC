@@ -1,5 +1,7 @@
 package td1.original.api.general;
 
+import td1.original.api.monetary.Product;
+
 public class Cheddar implements Product {
     // 400 kcal / 100g
 

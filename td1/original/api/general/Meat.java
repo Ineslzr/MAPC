@@ -1,5 +1,7 @@
 package td1.original.api.general;
 
+import td1.original.api.monetary.Product;
+
 public class Meat implements Product {
 
     public enum MeatType {

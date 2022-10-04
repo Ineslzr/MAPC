@@ -1,5 +1,7 @@
 package td1.original.api.general;
 
+import td1.original.api.monetary.Product;
+
 public class Tomato implements Product {
 
     private double weight;
